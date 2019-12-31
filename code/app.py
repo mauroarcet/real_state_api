@@ -1,9 +1,9 @@
 from flask import Flask
 
-from flask_jwt import JWT
 from flask_marshmallow import Marshmallow
 from flask_restful import Api
 from ma import ma
+from resources.real_state import RealState, RealStateList
 
 connection_string = (
     "postgresql"
@@ -33,7 +33,6 @@ def create_tables():
 
 api.add_resource(RealState, "/real_state", "/real_state/<string:id>")
 api.add_resource(RealStateList, "/real_states")
-api.add_resource(UserRegister, "/register")
 
 if __name__ == "__main__":
     from db import db

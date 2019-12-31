@@ -4,7 +4,7 @@ from db import db
 from sqlalchemy.sql import func
 from typing import List
 
-from models.helpers import get_timestamp
+from models.helper import get_timestamp
 
 
 class RealStateModel(db.Model):
