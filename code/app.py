@@ -1,7 +1,8 @@
 from flask import Flask
-from flask_restful import Api
+
 from flask_jwt import JWT
 from flask_marshmallow import Marshmallow
+from flask_restful import Api
 from ma import ma
 
 connection_string = (
@@ -29,8 +30,6 @@ api = Api(app)
 def create_tables():
     db.create_all()
 
-
-jwt = JWT(app, authenticate, identity)
 
 api.add_resource(RealState, "/real_state", "/real_state/<string:id>")
 api.add_resource(RealStateList, "/real_states")
