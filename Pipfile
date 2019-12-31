@@ -1,0 +1,15 @@
+[requires]
+python_version = "3.7.0"
+
+[packages]
+flask = "*"
+flask-sqlalchemy = "*"
+flask-restful = "*"
+flask-jwt-extended = "*"
+marshmallow = "*"
+flask-marshmallow = "*"
+marshmallow-sqlalchemy = "*"
+black = "*"
+
+[pipenv]
+allow_prereleases = true
