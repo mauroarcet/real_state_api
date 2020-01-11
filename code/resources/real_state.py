@@ -1,4 +1,5 @@
 import json
+import boto3
 
 from flask import request
 
@@ -33,6 +34,12 @@ class RealState(Resource):
 
         try:
             real_state.save_to_db()
+            lambda_client = boto3.client('lambda')
+            lambda_client.invoke(
+                FunctionName='dataAnalysis',
+                InvocationType='Event',
+                Payload=''
+            )
         except:
             return {"message": ERROR_INSERTING}, 500
 
@@ -69,8 +76,18 @@ class RealState(Resource):
                 return err.messages, 400
 
         real_state.save_to_db()
+        invoke_lambda()
 
         return real_state_schema.dump(real_state), 200
+
+    @classmethod
+    def invoke_lambda(cls):
+        lambda_client = boto3.client('lambda')
+        lambda_client.invoke(
+            FunctionName='dataAnalysis',
+            InvocationType='Event',
+            Payload=''
+        )    
 
 
 class RealStateList(Resource):

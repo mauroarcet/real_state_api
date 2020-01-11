@@ -10,11 +10,11 @@ connection_string = (
     + "+psycopg2"
     + "://"
     + "postgres:"
-    + "^kq55QAuIwr#"
-    + "@real-state-dev-db.canrzxdvzoof.us-east-2.rds.amazonaws.com"
+    + "s80*JzuUrsy8"
+    + "@database-2.canrzxdvzoof.us-east-2.rds.amazonaws.com"
     + ":5432"
     + "/"
-    + "realStateDb"
+    + "realStateDevelopmentDb"
 )
 
 app = Flask(__name__)
@@ -39,4 +39,4 @@ if __name__ == "__main__":
 
     db.init_app(app)
     ma.init_app(app)
-    app.run(port=5000, debug=True)
+    app.run(host= "0.0.0.0", port=5000)
